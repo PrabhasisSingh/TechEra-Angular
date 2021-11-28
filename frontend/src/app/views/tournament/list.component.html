@@ -1,0 +1,57 @@
+<!-- <%- include ../partials/header.ejs }} -->
+<app-header></app-header>
+<!-- Main Content -->
+<main class="container">
+    <div class="row">
+        <h1>Tournament List</h1>
+        <br>
+        <div>
+            <a routerLink="/tournament/add" class="btn btn-primary align-self-end" role="button">
+                <i class="fas fa-plus-circle"></i>
+                Add a new Item
+            </a>
+        </div>
+
+        <div class="table-responsive">
+            <table class="table table-bordered table-striped table-hover">
+                <!-- Header Row-->
+                <tr>
+                    <th class="text-center">Tournament Name</th>
+                    <th class="text-center">Description</th>
+                    <th class="text-center">Players</th>
+                    <th class="text-center">Tournament Type</th>
+                    <th class="text-center">Tournament Tier</th>
+                    <th class="text-center" colspan="2">Actions</th>
+                </tr>
+
+                <!-- Repeatable Template Row -->
+
+                <!-- <% for(let count = 0; count < tournaments.length; count++) { }} -->
+                <tr *ngFor="let item of tournamentList">
+                    <!-- <td class="text-center"> -->
+                        <!-- <a href="/tournament/details/<%= tournaments[count]._id }}">
+                                <%= tournaments[count].Name }}
+                            </a>
+                        </td> -->
+                    <td class="text-center">{{ item.Name }}</td>
+                    <td class="text-center">{{ item.Description }}</td>
+                    <td class="text-center">{{ item.Players }}</td>
+                    <td class="text-center">{{ item.Type }}</td>
+                    <td class="text-center">{{ item.Tier }}</td>
+
+                    <td class="text-center">
+                        <button [routerLink]="['/tournament/edit/', item._id]" class="btn bg-primary btn-primary btn-sm">
+                            <i class="fas fa-pencil-alt"></i></button>
+                    </td>
+                    <td class="text-center">
+                        <a (click)="deleteMethod(item._id)" class="btn bg-danger btn-danger btn-sm">
+                            <i class="fas fa-trash-alt"></i></a>
+                    </td>
+                </tr>
+                <!-- <% } }} -->
+            </table>
+        </div>
+    </div>
+</main>
+<!-- <%- include ../partials/footer.ejs }} -->
+<app-footer></app-footer>

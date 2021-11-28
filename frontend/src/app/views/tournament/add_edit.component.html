@@ -1,0 +1,83 @@
+<!-- <%- include ../partials/header.ejs %> -->
+<app-header></app-header>
+
+<!-- Content for the Add_Edit page -->
+<div class="container">
+    <div class="row">
+        <div class="offset-md-3 col-md-6">
+            <h1>{{editing ? "Edit" : "Add a new"}} Item</h1>
+
+            <form novalidate #form="ngForm" (ngSubmit)="save(form)">
+            <!-- <form class="form" method="POST"> -->
+                <div class="form-group">
+                    <input type="hidden"
+                        name="id"
+                        [(ngModel)]="item._id"
+                    >
+                    <label for="tournamentTextField">Name</label>
+                    <input type="text" class="form-control"
+                        id="tournamentTextField"
+                        placeholder="Enter the Tournament Name"
+                        name="Name" 
+                        [(ngModel)] = "item.Name"
+                        required>
+                </div>
+                <br />
+                <div class="form-group">
+                    <label for="tournamentTextField">Description</label>
+                    <input type="text" class="form-control"
+                        id="tournamentTextField"
+                        placeholder="Enter the tournament Description"
+                        name="Description" 
+                        [(ngModel)] = "item.Description"
+                        required>
+                </div>
+                <br />
+                <div class="form-group">
+                    <label for="statusTextField">Players</label>
+                    <input type="number" class="form-control"
+                    id="statusTextField"
+                    placeholder="Number of Players"
+                    name="Players" 
+                    [(ngModel)] = "item.Players"
+                    >
+                </div>
+                <br />
+                <div class="form-group">
+                    <label for="tournamentTextField">Tournament type</label>
+                    <input type="text" class="form-control"
+                        id="tournamentTextField"
+                        placeholder="Enter the tournament type"
+                        name="Type" 
+                        [(ngModel)] = "item.Type"
+                        required>
+                </div>
+                <br />
+                <div class="form-group">
+                    <label for="tournamentTextField">Tournament tier</label>
+                    <input type="number" class="form-control"
+                        id="tournamentTextField"
+                        placeholder="Enter the tournament tier"
+                        name="Tier"
+                        [(ngModel)] = "item.Tier" 
+                        required>
+                </div>
+                <br />
+
+                <button class="btn btn-primary" type="submit">
+                    <i class="fas fa-edit"></i> 
+                    Submit
+                </button>
+                
+                <a href="/tournament/list" class="btn btn-warning">
+                    <i class="fas fa-undo"></i> 
+                    Cancel
+                </a>
+
+            </form>
+        </div>
+
+    </div>
+</div>
+
+<%- include ../partials/footer.ejs %>
